@@ -1,0 +1,67 @@
+
+<!-- <div class="dropdown">
+	<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+	  Menu Items
+	</button>
+	<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+	  <%= link_to "Tiffin", class: "dropdown-item" %>
+	  <%= link_to "Lunch", class: "dropdown-item" %>
+	  <%= link_to "Fresh juice", class: "dropdown-item" %>
+	</div>
+      </div> -->
+      <div style="margin-left: 120px; width: 200px;">
+	<%= form_with model: @item, url: items_path, method: :get do |f| %>
+	<!-- <div class="field" style="margin-left: 50px; margin-top: 30px;"> -->
+	    <label class="label" style="padding: 10px;">Select Item</label>
+	    <%= select("item", "menubar_id", Menubar.all.collect { |p| [ p.name, p.id] }, { include_blank: "All Category", selected: params[:item] }, { class: "form-control" }) %>  
+	    <!-- </div> -->
+	    <%= f.submit "Select Catetogory" , class: 'btn btn-primary btn-sm' %>
+	<% end %>
+      </div>
+  
+<div class="container" style="margin-left: 450px; margin-top: 65px; font-size: 14px; width: 450px;">
+<p class="card-text"   style="font-size: 1.43rem; font-weight: 600;"><%= @hotel.name %> <span style="margin-left: 150px; padding: 20px;"> <%= @hotel.rating %> mins</span></p>
+<p class="card-text"><%= @hotel.description%></p>
+<p class="card-text"></p>
+<div style="padding: 5px; width: 350px; height:20px; border-bottom: 2px solid silver;">
+
+</div>
+<p class="card-text" style="padding: 10px;"><span style="font-size: 1.43rem; font-weight: 600;"> <%= @hotel.delivery_time %> mins</span></p>
+  <div class="row">
+	<% @items.each do |item| %>
+	  <div class="col-md-6" style="width: 400px;">
+		<h3 class="card-title" style="font-size: 1.22rem; font-weight: 500;color: #3e4152;"><%= item.name %></h5>
+		<% if current_user.cart_items.pluck(:name).include?(item.name) %>
+		(<%= item.item_count - 1 %>)
+		<p> ₹<%= item.price %> <span style="margin-left: 150px;"> Item added</span></p>
+		<% else %>
+		(<%= item.item_count%>)
+		<p> ₹<%= item.price %> <span style="margin-left: 150px;"><%= link_to "Add_to_cart",   cart_items_path(id: item.id), id: 'add_cart' %> </span><span id=display1> </span></p>
+		<% end %>    
+	       </p>
+	    </div> 
+	<% end %>
+	<!-- <div style="display: flex; margin-left: 550px;"> -->
+		<!-- </div> -->
+		<span style="margin-left: 250px;"><%= link_to "#{current_user.cart_items.count} Cart ", view_carts_path, class: "btn btn-primary", id: "test" if current_user.cart_items.count > 0 %></span>
+	</div>
+  </div>
+      
+
+  <script>
+	$(function(){
+	  // bind change event to select
+
+
+
+	  $("#test").click(function(){
+		$("#display1").html('Item added to cart');
+	  })
+
+	  $('#menubar_id').on('change', function () {
+		alert("hello")
+		document.getElementById("item_menubar_id").value
+	  })
+	});
+	
+    </script>

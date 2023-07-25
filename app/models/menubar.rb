@@ -1,0 +1,3 @@
+class Menubar < ApplicationRecord
+	has_many :items
+end

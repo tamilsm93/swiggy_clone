@@ -1,0 +1,80 @@
+
+<html>
+	<label for="myCheckBox">subscribe</label>
+	<input type="checkbox"  id="myCheckBox"><br />
+
+
+		
+
+	<label> Enter a temperature</label><br>
+	<input type="text" id="textBox"><br>
+
+	<label>convert to:</label><br>
+	<input type="radio" name="unit" id="cButton">
+	<label> Celsius </label><br>
+	<input type="radio" name="unit" id="cButton">
+	<label> Fahrenheit </label> <br>
+
+	<button id="submitButton"> Submit</button>
+
+	
+
+	<form action="#" method="get">
+		
+	</form>
+	<form name="myForm" id="myForm" action="#" method="get">
+		<strong> what's your name?</strong>
+		<input type="text" name="userName" id="userName" size="20" />
+		<input type="button" value="Greet" onclick="sayHello();"> <br />
+		<input type="button" value="ask the GURU" id="guru" onclick="askGuru();" />
+	</form>
+	<form name="payForm" id="pay1" action="#" method="get">
+		<label for="visaBtn">Visa </label>
+		<input type="radio" name="card" id="vistabtn" value="visa">
+		
+		<label for="mastercardBtn">master </label>
+		<input type="radio" name="card" id="mastecardbtn" value="master">
+		
+		
+		<label for="paypalbtn">paypal </label>
+		<input type="radio" name="card" id="paypalbtn" value="paypal">
+		<br/>
+		</form>
+
+	<script src="index.js"></script>
+</html>
+<script type="text/javascript">
+	function askGuru(){
+		var question = prompt("what is your question?", "")
+		if (question != null)
+		{
+			if (question == " ")
+				alert("At least you could ask a question");
+			else
+				alert("you thought on your silly question");		
+		}
+	}
+
+	function sayHello()
+	{
+		
+		var theirname = document.myForm.userName.value
+		if(theirname != " ")
+			alert("hello" + theirname+ "!")
+		else
+			alert('Dont be shy')
+			$('#pay1').show();	
+			
+	} 
+
+	$(function(){
+		$('#guru').hide();
+		$('#pay1').hide();
+
+	})
+
+	$('#pay1 input').on('change', function(){
+		alert($('input[name="card"]:checked', '#pay1').val());
+		
+	})
+</script>

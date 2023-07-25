@@ -1,0 +1,17 @@
+
+
+
+/* .btn btn-primary {
+	display: none;
+}
+
+.btn btn-primary .btn:hover {
+	display: block;
+} */
+.card.hover {
+	-webkit-filter: blur(1px);
+	-moz-filter: blur(1px);
+	filter: blur(1px);
+      }
+
+      

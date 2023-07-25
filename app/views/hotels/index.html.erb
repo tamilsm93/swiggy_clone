@@ -1,0 +1,62 @@
+<p id="notice"><%= notice %></p>
+<!-- <h1>SwiggyApp</h1> -->
+
+<div class="input-group" style="margin-left: 250px; width: 350px;">
+  <div class="form-outline">
+    <input class="form-control" type="text" placeholder="Search  Restaurants" aria-label="Search">
+  </div>
+
+</div>
+   <div class="row" style="margin-left: 100px; margin-top: 65px; font-size: 14px; background-color: #e9ecee ">
+  <p> <%= @hotels.count %> restaurants  <span style="padding: 30px; margin-left: 20px;"> <%= link_to "delivery_time", hotels_path(name: "delivery_time") %> </span>  <span style="padding: 10px; margin-left: 10px;"> <%= link_to "Rating",  hotels_path(name: "rating") %> <span style="padding: 30px; margin-left: 10px;"> <%= link_to "HighPrice", hotels_path(name: "highprice") %> <span style="padding: 30px; margin-left: 10px;"></span><%= link_to "LowPrice", hotels_path(name: "lowprice") %></span><span style="margin-right: 30px;">
+  </p>
+
+
+
+    <% @hotels.each do |hotel| %>
+      <!-- <tr>
+        <td><%= link_to 'Show', hotel %></td>
+        <td><%= link_to 'Edit', edit_hotel_path(hotel) %></td>
+        <td><%= link_to 'Destroy', hotel, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr> -->
+      <!-- <div class="container"> -->
+          <div class="col-md-4">
+            <img class="card-body">
+              <div class="card"  style="width: 250px; padding:15px;">
+              <h5 class="card-title" style="font-style: 17px"><%= hotel.name %></h5>
+              <p class="card-text"><%= hotel.description %></p>
+              <p><span style="margin-left:-5px;"><span style="padding: 10px"><%= hotel.rating %></span><span style="padding: 10px"><%= hotel.delivery_time %>min</span>  ₹<%= hotel.price %> </span> </p>
+              <div class="hotel">
+                <%= link_to "Quick view", items_path(id: hotel.id) %>
+              </div>
+              </div>
+          </div>  
+      <!-- </div>   -->
+    <% end %>
+<br>
+</div>
+    
+<%= link_to 'New Hotel', new_hotel_path %>
+
+<script type="text/javascript">
+$(document).ready(function () {
+  
+  $(".card").hover(function(){
+    $(this).css('background-color', '#eef0f5')
+    $(this).css('width', '254px');
+  })
+  $('.card').on("mouseout", function (){
+    $(this).css('background-color','')
+  })
+  
+  $("#delivery_time").click( function(){
+    $.ajax({
+      url: "hotels",
+      type: "GET",
+        data: { data: 'delivery_time'},
+        dataType: 'json'
+      })
+      console.log(data)
+    })
+  });
+</script>

@@ -30,9 +30,9 @@ class CartItemsController < ApplicationController
 
 
 	def twilio_message(message_items, cost)
-		account_sid = 'AC08acdccf148f837b38231970ce2631ec'
-		auth_token = 'f6ea352202df19be00c297c2f718b0a9'
-
+		
+		account_sid = Rails.application.credentials[:twilio][:account_sid]
+		auth_token =  Rails.application.credentials[:twilio][:auth_token]
 		@client = Twilio::REST::Client.new(account_sid, auth_token)
 
 		message = message_items.split(',').join(' ')

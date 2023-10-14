@@ -10,7 +10,7 @@ gem 'sqlite3', '~> 1.4'
 gem 'jquery-rails'
 gem 'razorpay'
 gem 'twilio-ruby', '~> 6.3.0'
-gem "roo", "~> 2.9.0"
+# gem "roo", "~> 2.9.0"
 
 gem "devise"
 

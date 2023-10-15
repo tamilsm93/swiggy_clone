@@ -3,14 +3,15 @@ class HotelsController < ApplicationController
 
   # GET /hotels or /hotels.json
   def index
-
-    if params["name"]== "delivery_time"
-      @hotels =  @motel.sort { |a,b| a.delivery_time <=> b.delivery_time }
-    elsif params["name"]== "rating"
-      @hotels =  @motel.sort { |a,b| b.rating <=> a.rating }
-    elsif params["name"]== "highprice"
+    
+    case params["name"]
+    when "delivery_time"
+      @hotels =  Hotel.all.sort { |a,b| a.delivery_time <=> b.delivery_time }
+    when  "rating"
+      @hotels =  Hotel.all.sort { |a,b| b.rating <=> a.rating }
+    when "highprice"
       @hotels = Hotel.all.sort { |a,b| b.price <=> a.price }
-    elsif params["name"]== "lowprice"
+    when "lowprice"
       @hotels = Hotel.all.sort { |a,b| a.price <=> b.price }
     else
       @hotels = Hotel.all

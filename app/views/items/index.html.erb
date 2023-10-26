@@ -10,15 +10,16 @@
 	</div>
       </div> -->
       <div style="margin-left: 120px; width: 200px;">
-	<%= form_with model: @item, url: items_path, method: :get do |f| %>
+	<%= form_with model: @item, url: items_path(id: @hotel.id), method: :get do |f| %>
 	<!-- <div class="field" style="margin-left: 50px; margin-top: 30px;"> -->
 	    <label class="label" style="padding: 10px;">Select Item</label>
-	    <%= select("item", "menubar_id", Menubar.all.collect { |p| [ p.name, p.id] }, { include_blank: "All Category", selected: params[:item] }, { class: "form-control" }) %>  
+	    <%= select("item", "menubar_id", Menubar.all.collect { |p| [ p.name, p.id] }, { include_blank: "All Category", selected: params[:item] }, { class: "form-control" }) %>
+	    <%= f.hidden_field :hotel_id, value: @hotel.id %>  
 	    <!-- </div> -->
 	    <%= f.submit "Select Catetogory" , class: 'btn btn-primary btn-sm' %>
 	<% end %>
       </div>
-  
+ <% binding.pry %> 
 <div class="container" style="margin-left: 450px; margin-top: 65px; font-size: 14px; width: 450px;">
 <p class="card-text"   style="font-size: 1.43rem; font-weight: 600;"><%= @hotel.name %> <span style="margin-left: 150px; padding: 20px;"> <%= @hotel.rating %> mins</span></p>
 <p class="card-text"><%= @hotel.description%></p>

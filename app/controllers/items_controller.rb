@@ -1,7 +1,8 @@
 class ItemsController < ApplicationController
 
 	def index
-		@hotel = Hotel.find_by(id: 1)
+		hotel_id = params["hotel_id"] || params[:id]
+		@hotel = Hotel.find_by(id:  hotel_id.to_i)
 		@items = @hotel.items&.all&.where(menubar_id: params[:id] ||  params["item"]["menubar_id"])
 
 	end

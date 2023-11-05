@@ -12,21 +12,21 @@
       <div style="margin-left: 120px; width: 200px;">
 	<%= form_with model: @item, url: items_path(id: @hotel.id), method: :get do |f| %>
 	<!-- <div class="field" style="margin-left: 50px; margin-top: 30px;"> -->
-	    <label class="label" style="padding: 10px;">Select Item</label>
-	    <%= select("item", "menubar_id", Menubar.all.collect { |p| [ p.name, p.id] }, { include_blank: "All Category", selected: params[:item] }, { class: "form-control" }) %>
+	    <label class="label" style="padding: 10px;">Menu List</label>
+	    <%= select("item", "menubar_id", Menubar.all.collect { |p| [ p.name, p.id] }, { include_blank: "Select Menu", selected: params[:item] }, { class: "form-control" }) %>
 	    <%= f.hidden_field :hotel_id, value: @hotel.id %>  
 	    <!-- </div> -->
-	    <%= f.submit "Select Catetogory" , class: 'btn btn-primary btn-sm' %>
+	    <%= f.submit "Browse Menu" , class: 'btn btn-primary btn-sm' %>
 	<% end %>
       </div>
- <% binding.pry %> 
 <div class="container" style="margin-left: 450px; margin-top: 65px; font-size: 14px; width: 450px;">
-<p class="card-text"   style="font-size: 1.43rem; font-weight: 600;"><%= @hotel.name %> <span style="margin-left: 150px; padding: 20px;"> <%= @hotel.rating %> mins</span></p>
+<p class="card-text"   style="font-size: 1.43rem; font-weight: 600;"><%= @hotel.name %> <span style="margin-left: 150px; padding: 20px;"> &#9733; <%= @hotel.rating %> </span></p>
 <p class="card-text"><%= @hotel.description%></p>
 <p class="card-text"></p>
 <div style="padding: 5px; width: 350px; height:20px; border-bottom: 2px solid silver;">
 
 </div>
+<% if @items.present? %>
 <p class="card-text" style="padding: 10px;"><span style="font-size: 1.43rem; font-weight: 600;"> <%= @hotel.delivery_time %> mins</span></p>
   <div class="row">
 	<% @items.each do |item| %>
@@ -48,9 +48,11 @@
 	       </p>
 	    </div> 
 	<% end %>
+<% end %>
+
 	<!-- <div style="display: flex; margin-left: 550px;"> -->
 		<!-- </div> -->
-		<span style="margin-left: 250px;"><%= link_to "#{current_user.cart_items.count} Items ", view_carts_path, class: "btn btn-primary", id: "test" if current_user.cart_items.count > 0 %></span>
+		<!-- <span style="margin-left: 250px;"><%= link_to "#{current_user.cart_items.count} Items ", view_carts_path, class: "btn btn-primary", id: "test" if current_user.cart_items.count > 0 %></span> -->
 	</div>
   </div>
       

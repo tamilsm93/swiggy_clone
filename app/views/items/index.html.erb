@@ -34,10 +34,8 @@
 	  <div class="col-md-6" style="width: 400px;">
 		<h3 class="card-title" style="font-size: 1.22rem; font-weight: 500;color: #3e4152;"><%= item.name %></h5>
 		<% if current_user.cart_items.pluck(:name).include?(item.name) %>
-		(<%= item.item_count - 1 %>)
 		<p> ₹<%= item.price %> <span style="margin-left: 150px;"> Item added</span></p>
 		<% else %>
-		(<%= item.item_count%>)
 		<p> ₹<%= item.price %> <span style="margin-left: 150px;"><%= link_to "Add_to_cart",   cart_items_path(id: item.id), id: 'add_cart' %> </span>
 
 		<!-- <button id="food-cart" href="#">Add to cart</a> -->

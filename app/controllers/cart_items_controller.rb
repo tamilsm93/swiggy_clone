@@ -32,9 +32,7 @@ class CartItemsController < ApplicationController
 	def twilio_message(message_items, cost)
 		account_sid = Rails.application.credentials[:twilio][:account_sid]
 		auth_token =  Rails.application.credentials[:twilio][:auth_token]
-		binding.pry
 		twilio_service = TwilioMessageService.new(account_sid, auth_token)
-		binding.pry
 		twilio_service.send_message(items, price)
 	end
 end

@@ -1,8 +1,6 @@
-require 'twilio-ruby'
 class TwilioMessageService
 
 	def initialize(account_sid, auth_token)
-		binding.pry	
 	  @account_sid = account_sid
 	  @auth_token = auth_token
 	  @client = Twilio::REST::Client.new(@account_sid, @auth_token)
@@ -11,11 +9,8 @@ class TwilioMessageService
 
 
 	def send_message(message_items, cost)
-		
 		message = message_items.split(',').join(' ')
 		cost    = cost.to_s
-		binding.pry
-
 		text  =  'The items are' + message_items + ' ' + 'price is'  + ' ' + cost +  'in 10 - 15 mins'
 		message = @client.messages.create(
 			from: '+15737993581',

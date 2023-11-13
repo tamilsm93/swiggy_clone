@@ -21,7 +21,7 @@ Rails.application.routes.draw do
 
   get 'category_item', to: 'items#category_item'
 
-  get '*unmatched_route', to: 'main#not_found'
+  # get '*unmatchediroute', to: 'main#not_found'
 
 
   resources :select_items, only: [:index]

@@ -34,5 +34,8 @@ class CartItemsController < ApplicationController
 		auth_token =  Rails.application.credentials[:twilio][:auth_token]
 		twilio_service = TwilioMessageService.new(account_sid, auth_token)
 		twilio_service.send_message(items, price)
+
+		SendEmailJob.perform_async(@user.id)
+		
 	end
 end

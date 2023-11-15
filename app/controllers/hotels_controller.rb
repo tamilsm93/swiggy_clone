@@ -12,7 +12,7 @@ class HotelsController < ApplicationController
     when "highprice"
       @hotels =  @restaurants.sort { |a,b| b.price <=> a.price }
     when "lowprice"
-      @hotels =  @restaurantssort { |a,b| a.price <=> b.price }
+      @hotels =  @restaurants.sort { |a,b| a.price <=> b.price }
     else
       @hotels =  @restaurants
     end

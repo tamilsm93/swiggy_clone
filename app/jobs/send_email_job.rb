@@ -6,6 +6,5 @@ class SendEmailJob < ApplicationJob
     # Do something later
     user = User.find(user_id)
     UserMailer.perform_async(@user.id)
-    binding.pry
   end
 end

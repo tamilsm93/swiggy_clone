@@ -2,6 +2,7 @@ class UserMailer < ApplicationMailer
   def welcome(user)
     @user = user
     mail(to: @user.mail, subject: 'Welcome to my swiggy_app')
+    binding.pry
   end
 
   def password_reset(user)

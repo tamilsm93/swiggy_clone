@@ -35,7 +35,8 @@ class CartItemsController < ApplicationController
 		twilio_service = TwilioMessageService.new(account_sid, auth_token)
 		twilio_service.send_message(items, price)
 
-		SendEmailJob.perform_async(@user.id)
+		# SendEmailJob.perform_async(@user.id)
+		SendWelcomeEmailWorker.perform_async(current_user.id)
 		
 	end
 end

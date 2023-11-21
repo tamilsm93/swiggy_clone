@@ -1,0 +1,11 @@
+
+
+<% if @user_location[:error] %>
+  <p><%= @user_location[:error] %></p>
+<% else %>
+  <p>Latitude: <%= @user_location[:latitude] %></p>
+  <p>Longitude: <%= @user_location[:longitude] %></p>
+  <p>City: <%= @user_location[:city] %></p>
+  <p>State: <%= @user_location[:state] %></p>
+  <p>Country: <%= @user_location[:country] %></p>
+<% end %>

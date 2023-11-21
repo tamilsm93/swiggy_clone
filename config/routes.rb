@@ -21,6 +21,8 @@ Rails.application.routes.draw do
 
   get 'category_item', to: 'items#category_item'
 
+  get 'get_user_location', to: 'location#get_user_location'
+
   # get '*unmatchediroute', to: 'main#not_found'
 
 

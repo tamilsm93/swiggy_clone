@@ -17,6 +17,8 @@ gem 'redis' # Sidekiq relies on Redis for storing job data
 
 gem "devise"
 
+gem "geocoder"
+
 gem 'pry', '~> 0.14.1'
 
 gem 'bootstrap', '~> 5.2', '>= 5.2.3'

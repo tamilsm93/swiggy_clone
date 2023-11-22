@@ -18,15 +18,15 @@ class HotelsController < ApplicationController
       @hotels =  @restaurants
     end
 
-    @json = Jbuilder.new
-    @hotels.each do |hotel|
-      @json.hotel do 
-        @json.id hotel.id
-        @json.name hotel.name
-        @json.description hotel.description
-        @json.price hotel.price
-    end
-  end
+  #   @json = Jbuilder.new
+  #   @hotels.each do |hotel|
+  #     @json.hotel do 
+  #       @json.id hotel.id
+  #       @json.name hotel.name
+  #       @json.description hotel.description
+  #       @json.price hotel.price
+  #   end
+  # end
 end
 
   # GET /hotels/1 or /hotels/1.json
